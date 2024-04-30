@@ -16,6 +16,9 @@ public class Main
     
     JButton btnDamiera[][] = new JButton[8][8];
     JPanel tavolo;
+
+    ImageIcon pedinaB = new ImageIcon("img/pedinaB.png");
+    ImageIcon pedinaN = new ImageIcon("img/pedinaN.png");
     Main()
     {
         f = new JFrame("Dama");
@@ -25,7 +28,15 @@ public class Main
 		f.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
         tavolo = new JPanel(new FlowLayout(FlowLayout.LEFT));
-        
+        //
+        Image img = pedinaN.getImage() ;  
+        Image newimg = img.getScaledInstance( 100, 100,  java.awt.Image.SCALE_SMOOTH ) ;  
+        pedinaN = new ImageIcon( newimg );
+
+        Image img1 = pedinaB.getImage() ;  
+        Image newimg1 = img1.getScaledInstance( 100, 100,  java.awt.Image.SCALE_SMOOTH ) ;  
+        pedinaB = new ImageIcon( newimg1 );
+        //
         pnlsinistra = new JPanel(new GridLayout(8,8));
         pnlsinistra.setBorder(new EmptyBorder(50, 50, 50, 50));
         pnlsinistra.setPreferredSize(new Dimension(1000, 1000));
@@ -33,20 +44,30 @@ public class Main
 
         boolean temp = false;   //per alternare il marrone e il biege sulla damiera
 
+        int cN=0,cB=0;
         for (int i = 0; i < 8; i++)
         {
             for (int j = 0; j < 8; j++)
             {
                 
-                btnDamiera[i][j] = new JButton("" + (i + 1) + " " + (j + 1));
+                btnDamiera[i][j] = new JButton();
                 if (temp)
                 {
                     btnDamiera[i][j].setBackground(new Color(240, 222, 173));
+                    if(cB<12){
+                        btnDamiera[i][j].setIcon(pedinaB);
+                        cB++;
+                    }
                     temp = false;
                 }
                 else
                 {
                     btnDamiera[i][j].setBackground(new Color(69, 47, 28));
+                    if(cN>19){
+                        btnDamiera[i][j].setIcon(pedinaN);
+                        
+                    }
+                    cN++;
                     temp = true;
                 }
                 pnlsinistra.add(btnDamiera[i][j]);
@@ -65,7 +86,7 @@ public class Main
         tavolo.add(pnlsinistra);
 
         f.add(tavolo,"Center");
-
+        f.setMinimumSize(new Dimension(1300, 1300));;
     }
 
     public static void main(String[] args)
