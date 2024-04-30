@@ -5,7 +5,7 @@ import java.awt.event.*;
 
 /*
  * Data: 29/04/2024
- * Versione: 0.3
+ * Versione: 0.4
  */
 public class Main
 {
@@ -54,18 +54,20 @@ public class Main
                 if (temp)
                 {
                     btnDamiera[i][j].setBackground(new Color(240, 222, 173));
-                    if(cB<12){
-                        btnDamiera[i][j].setIcon(pedinaB);
-                        cB++;
-                    }
                     temp = false;
                 }
                 else
                 {
                     btnDamiera[i][j].setBackground(new Color(69, 47, 28));
                     if(cN>19){
+                        btnDamiera[i][j].setIcon(pedinaB);
+                       // btnDamiera[i][j].setText("N");
+                    }
+
+                    if(cB<12){
                         btnDamiera[i][j].setIcon(pedinaN);
-                        
+                       // btnDamiera[i][j].setText("B");
+                        cB++;
                     }
                     cN++;
                     temp = true;
@@ -88,6 +90,23 @@ public class Main
         f.add(tavolo,"Center");
         f.setMinimumSize(new Dimension(1300, 1300));;
     }
+
+    /*
+    class InteragisciPezzi
+    {
+
+        class SelezionePedina implements ActionListener
+        {
+            public void actionPerformed(ActionEvent e)
+            {
+                if(e.getActionCommand() == "N")
+                {
+                    e.
+                }
+            }
+        }
+    }
+    */
 
     public static void main(String[] args)
     {
