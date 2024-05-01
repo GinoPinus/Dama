@@ -15,7 +15,10 @@ public class Main
     JPanel pnlsinistra;
     
     JButton btnDamiera[][] = new JButton[8][8];
-    JPanel tavolo;
+    JPanel pnlTavolo;
+
+    JLabel lblTurno;
+    JPanel pnlTurno;
 
     ImageIcon pedinaB = new ImageIcon("img/pedinaB.png");
     ImageIcon pedinaN = new ImageIcon("img/pedinaN.png");
@@ -27,7 +30,13 @@ public class Main
         f.setLayout(new BorderLayout());
 		f.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
-        tavolo = new JPanel(new FlowLayout(FlowLayout.LEFT));
+        lblTurno = new JLabel("E' il tuo turno");
+        lblTurno.setFont(new Font("Calibri", Font.PLAIN, 24));
+        pnlTurno = new JPanel(new GridLayout(1,1));
+        pnlTurno.add(lblTurno);
+        pnlTurno.setBorder(new EmptyBorder(20,440,0,0));
+
+        pnlTavolo = new JPanel(new FlowLayout(FlowLayout.LEFT));
         //
         Image img = pedinaN.getImage() ;  
         Image newimg = img.getScaledInstance( 100, 100,  java.awt.Image.SCALE_SMOOTH ) ;  
@@ -38,7 +47,7 @@ public class Main
         pedinaB = new ImageIcon( newimg1 );
         //
         pnlsinistra = new JPanel(new GridLayout(8,8));
-        pnlsinistra.setBorder(new EmptyBorder(50, 50, 50, 50));
+        pnlsinistra.setBorder(new EmptyBorder(30, 50, 50, 50));
         pnlsinistra.setPreferredSize(new Dimension(1000, 1000));
         
 
@@ -85,10 +94,12 @@ public class Main
             }
         }
 
-        tavolo.add(pnlsinistra);
+        pnlTavolo.add(pnlsinistra);
 
-        f.add(tavolo,"Center");
+        f.add(pnlTavolo,"Center");
         f.setMinimumSize(new Dimension(1300, 1300));;
+
+        f.add(pnlTurno,"North");
     }
 
     /*
