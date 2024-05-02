@@ -85,12 +85,21 @@ public class Main {
 
         f.add(pnlTurno, "North");
     }
-
-    class SelezionePedina implements ActionListener {
-        public void actionPerformed(ActionEvent e) {
+    JButton btnPosto1 = null;
+    class SelezionePedina implements ActionListener {         public void actionPerformed(ActionEvent e) {
             JButton btnTemp = (JButton) e.getSource();
-
-            btnTemp.setText("NIGGA");
+            if(btnPosto1 == null){
+                if(btnTemp.getIcon()==new ImageIcon("img/pedinaB.png")){
+                    btnPosto1 = btnTemp;
+                }else{
+                    btnTemp.setText("spigga");
+                    //qua possiamo mettere un colore rosso che durera mezzo secondo 
+                }
+            }else if(btnPosto1 != null){
+                btnTemp.setText("Nigga");
+                //qua dobbiamo fare il controllore con le regole del gioco(se la pedina puo andare in quel posto oppure no)
+                btnPosto1 = null;
+            }
         }
     }
 
