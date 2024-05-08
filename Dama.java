@@ -105,8 +105,15 @@ public class Dama {
         f.add(pnlTavolo, "Center");
         f.setMinimumSize(new Dimension(1300, 1300));
         
+        pnlPunteggio.setBackground(Color.LIGHT_GRAY);
+        pnlTurno.setBackground(Color.LIGHT_GRAY);
+        pnlsinistra.setBackground(Color.LIGHT_GRAY);
+        pnlTavolo.setBackground(Color.LIGHT_GRAY);
+
         f.add(pnlTurno, "North");
         f.add(pnlPunteggio, "East");
+
+        
     }
     JButton btnPosto1 = null;
     class SelezionePedina implements ActionListener {         public void actionPerformed(ActionEvent e) {
