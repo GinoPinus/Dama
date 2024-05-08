@@ -4,8 +4,7 @@ import java.awt.*;
 import java.awt.event.*;
 
 /*
- * Data: 29/04/2024
- * Versione: 0.4
+ 
  */
 public class Dama {
     JFrame f;
@@ -25,6 +24,8 @@ public class Dama {
     Pedina n = new Pedina(true);
     Pedina b = new Pedina(false);
 
+    int punteggioB = 12, punteggioN = 12;
+
     Dama(){
         f = new JFrame("Dama");
         f.setVisible(true);
@@ -38,10 +39,10 @@ public class Dama {
         pnlTurno.add(lblTurno);
         pnlTurno.setBorder(new EmptyBorder(20, 450, 0, 0));
 
-        lblPunteggioB = new JLabel("X 12");
+        lblPunteggioB = new JLabel("X "+punteggioB);
         lblPunteggioB.setFont(new Font("Arial", Font.PLAIN, 75));
 
-        lblPunteggioN = new JLabel("X 12");
+        lblPunteggioN = new JLabel("X "+punteggioN);
         lblPunteggioN.setFont(new Font("Arial", Font.PLAIN, 75));
 
         pnlPunteggio = new JPanel(new GridLayout(2, 2));
