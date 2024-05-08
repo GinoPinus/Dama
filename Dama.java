@@ -19,10 +19,13 @@ public class Dama {
     JLabel lblTurno, lblPunteggio;
     JPanel pnlTurno, pnlPunteggio;
 
+    JLabel lblBianco = new JLabel();
+    JLabel lblNero = new JLabel();
+
     Pedina n = new Pedina(true);
     Pedina b = new Pedina(false);
 
-    Dama() {
+    Dama(){
         f = new JFrame("Dama");
         f.setVisible(true);
         f.setExtendedState(JFrame.MAXIMIZED_BOTH);
@@ -35,11 +38,19 @@ public class Dama {
         pnlTurno.add(lblTurno);
         pnlTurno.setBorder(new EmptyBorder(20, 450, 0, 0));
 
-        lblPunteggio = new JLabel("P1   0 - 0   P2");
+        lblPunteggio = new JLabel("12 - 12");
         lblPunteggio.setFont(new Font("Calibri", Font.PLAIN, 75));
-        pnlPunteggio = new JPanel(new GridLayout(1, 1));
+        pnlPunteggio = new JPanel(new GridLayout(1, 3));
+
+        lblBianco.setIcon(b.imgPedina);
+        pnlPunteggio.add(lblBianco);
+
         pnlPunteggio.add(lblPunteggio);
-        pnlPunteggio.setBorder(new EmptyBorder(0, 0, 0, 300));
+
+        lblNero.setIcon(n.imgPedina);
+        pnlPunteggio.add(lblNero);
+
+        //pnlPunteggio.setBorder(new EmptyBorder(0, 500, 0, 0));
 
         pnlTavolo = new JPanel(new FlowLayout(FlowLayout.LEFT));
         pnlsinistra = new JPanel(new GridLayout(8, 8));
