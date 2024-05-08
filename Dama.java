@@ -16,7 +16,7 @@ public class Dama {
     JButton btnDamiera[][] = new JButton[8][8];
     JPanel pnlTavolo;
 
-    JLabel lblTurno, lblPunteggio;
+    JLabel lblTurno, lblPunteggioB, lblPunteggioN;
     JPanel pnlTurno, pnlPunteggio;
 
     JLabel lblBianco = new JLabel();
@@ -38,19 +38,24 @@ public class Dama {
         pnlTurno.add(lblTurno);
         pnlTurno.setBorder(new EmptyBorder(20, 450, 0, 0));
 
-        lblPunteggio = new JLabel("12 - 12");
-        lblPunteggio.setFont(new Font("Calibri", Font.PLAIN, 75));
-        pnlPunteggio = new JPanel(new GridLayout(1, 3));
+        lblPunteggioB = new JLabel("X 12");
+        lblPunteggioB.setFont(new Font("Arial", Font.PLAIN, 75));
+
+        lblPunteggioN = new JLabel("X 12");
+        lblPunteggioN.setFont(new Font("Arial", Font.PLAIN, 75));
+
+        pnlPunteggio = new JPanel(new GridLayout(2, 2));
 
         lblBianco.setIcon(b.imgPedina);
         pnlPunteggio.add(lblBianco);
 
-        pnlPunteggio.add(lblPunteggio);
+        pnlPunteggio.add(lblPunteggioB);
 
         lblNero.setIcon(n.imgPedina);
         pnlPunteggio.add(lblNero);
 
-        //pnlPunteggio.setBorder(new EmptyBorder(0, 500, 0, 0));
+        pnlPunteggio.add(lblPunteggioN);
+        pnlPunteggio.setBorder(new EmptyBorder(0, 0, 0, 200));
 
         pnlTavolo = new JPanel(new FlowLayout(FlowLayout.LEFT));
         pnlsinistra = new JPanel(new GridLayout(8, 8));
