@@ -25,6 +25,7 @@ public class Dama {
 
     int punteggioB = 12, punteggioN = 12;
 
+    Color marrone = new Color(69, 47, 28);
     Dama(){
         f = new JFrame("Dama");
         f.setVisible(true);
@@ -119,13 +120,13 @@ public class Dama {
             JButton btnTemp = (JButton) e.getSource();
             
             if(btnPosto1 == null){
-                if(btnTemp.getIcon()==new ImageIcon("img/pedinaB.png")){
+                if(btnTemp.getIcon()==n.imgPedina){
                     btnPosto1 = btnTemp;
-                }else{
+                }else if(btnTemp.getIcon()==b.imgPedina){
                     btnPosto1 = btnTemp;
                     //qua possiamo mettere un colore rosso che durera mezzo secondo 
                 }
-            }else if(btnPosto1 != null){
+            }else if(btnPosto1 != null && btnTemp.getBackground() == marrone){
                 icnTmp=btnPosto1.getIcon();
                 btnPosto1.setIcon(null);
                 btnTemp.setIcon(icnTmp);
