@@ -3,9 +3,6 @@ import javax.swing.border.EmptyBorder;
 import java.awt.*;
 import java.awt.event.*;
 
-/*
- 
- */
 public class Dama {
     JFrame f;
 
@@ -23,6 +20,8 @@ public class Dama {
 
     Pedina n = new Pedina(true);
     Pedina b = new Pedina(false);
+
+    Icon icnTmp;
 
     int punteggioB = 12, punteggioN = 12;
 
@@ -112,21 +111,24 @@ public class Dama {
 
         f.add(pnlTurno, "North");
         f.add(pnlPunteggio, "East");
-
-        
+ 
     }
-    JButton btnPosto1 = null;
-    class SelezionePedina implements ActionListener {         public void actionPerformed(ActionEvent e) {
+    JButton btnPosto1 = null;  
+    class SelezionePedina implements ActionListener {    
+        public void actionPerformed(ActionEvent e) {
             JButton btnTemp = (JButton) e.getSource();
+            
             if(btnPosto1 == null){
                 if(btnTemp.getIcon()==new ImageIcon("img/pedinaB.png")){
                     btnPosto1 = btnTemp;
                 }else{
-                    
+                    btnPosto1 = btnTemp;
                     //qua possiamo mettere un colore rosso che durera mezzo secondo 
                 }
             }else if(btnPosto1 != null){
-                
+                icnTmp=btnPosto1.getIcon();
+                btnPosto1.setIcon(null);
+                btnTemp.setIcon(icnTmp);
                 //qua dobbiamo fare il controllore con le regole del gioco(se la pedina puo andare in quel posto oppure no)
                 btnPosto1 = null;
             }
