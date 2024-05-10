@@ -1,5 +1,7 @@
 import javax.swing.*;
 import javax.swing.border.EmptyBorder;
+import javax.swing.plaf.basic.BasicComboPopup;
+
 import java.awt.*;
 import java.awt.event.*;
 
@@ -72,10 +74,10 @@ public class Dama {
                 btnDamiera[i][j] = new JButton();
                 btnDamiera[i][j].addActionListener(new SelezionePedina());
                 if (temp) {
-                    btnDamiera[i][j].setBackground(new Color(240, 222, 173));
+                    btnDamiera[i][j].setBackground(Color.white);
                     temp = false;
                 } else {
-                    btnDamiera[i][j].setBackground(new Color(69, 47, 28));
+                    btnDamiera[i][j].setBackground(Color.black);
                     if (cN > 19) {
                         btnDamiera[i][j].setIcon(b.imgPedina);
                         // btnDamiera[i][j].setText("N");
@@ -118,7 +120,6 @@ public class Dama {
     class SelezionePedina implements ActionListener {    
         public void actionPerformed(ActionEvent e) {
             JButton btnTemp = (JButton) e.getSource();
-            
             if(btnPosto1 == null){
                 if(btnTemp.getIcon()==n.imgPedina){
                     btnPosto1 = btnTemp;
@@ -126,7 +127,7 @@ public class Dama {
                     btnPosto1 = btnTemp;
                     //qua possiamo mettere un colore rosso che durera mezzo secondo 
                 }
-            }else if(btnPosto1 != null && btnTemp.getBackground() == marrone){
+            }else if(btnTemp.getBackground() == Color.black){
                 icnTmp=btnPosto1.getIcon();
                 btnPosto1.setIcon(null);
                 btnTemp.setIcon(icnTmp);
