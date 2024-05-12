@@ -134,15 +134,20 @@ public class Dama
                     btnPosto1 = btnTemp;
                 }else if(btnTemp.getIcon()==b.imgPedina){
                     btnPosto1 = btnTemp;
-                    
+
                 }
             }else if(btnTemp.getBackground() == marrone){
                 icnTmp=btnPosto1.getIcon();
                 btnPosto1.setIcon(null);
                 btnTemp.setIcon(icnTmp);
                 for(int i=0;i<8;i++){
-                    if(btnDamiera[0][i].getIcon()==b.imgPedina){
-                        btnDamiera[0][i].setIcon(n.imgPedina);
+                    if (btnDamiera[0][i].getIcon()==b.imgPedina){
+                        btnDamiera[0][i].setIcon(b.imgDama);
+                    }
+
+                    if (btnDamiera[7][i].getIcon()==n.imgPedina)
+                    {
+                        btnDamiera[7][i].setIcon(n.imgDama);
                     }
                 }
                 //qua dobbiamo fare il controllore con le regole del gioco(se la pedina puo andare in quel posto oppure no)
