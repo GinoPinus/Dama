@@ -5,7 +5,7 @@ import java.awt.*;
 import java.awt.event.*;
 
 /*
-Versione: 0.81
+Versione: 0.99
 Data: 12/5/24 
  */
 
@@ -27,7 +27,7 @@ public class Dama
 
     Pedina n = new Pedina(true);
     Pedina b = new Pedina(false);
-    Mossa mossa = new Mossa();
+    Mossa mossa = new Mossa(n,b);
 
     Icon icnTmp;
     Color clrTemp;
@@ -169,8 +169,7 @@ public class Dama
                     }
                 }
                 //
-                if(mossa.controlloC1(i1,j1,i2,j2,nColore)){
-                    System.out.println("ciaooo");
+                if(mossa.controlloC1(i1,j1,i2,j2,nColore,btnDamiera)){
                     icnTmp=btnPosto1.getIcon();
                     btnPosto1.setIcon(null);
                     btnTemp.setIcon(icnTmp);
