@@ -109,6 +109,8 @@ public class Dama
             }
         }
 
+        
+
         pnlTavolo.add(pnlsinistra);
 
         f.add(pnlTavolo, "Center");
@@ -132,12 +134,17 @@ public class Dama
                     btnPosto1 = btnTemp;
                 }else if(btnTemp.getIcon()==b.imgPedina){
                     btnPosto1 = btnTemp;
-                    //qua possiamo mettere un colore rosso che durera mezzo secondo 
+                    
                 }
             }else if(btnTemp.getBackground() == marrone){
                 icnTmp=btnPosto1.getIcon();
                 btnPosto1.setIcon(null);
                 btnTemp.setIcon(icnTmp);
+                for(int i=0;i<8;i++){
+                    if(btnDamiera[0][i].getIcon()==b.imgPedina){
+                        btnDamiera[0][i].setIcon(n.imgPedina);
+                    }
+                }
                 //qua dobbiamo fare il controllore con le regole del gioco(se la pedina puo andare in quel posto oppure no)
                 btnPosto1 = null;
             }
