@@ -31,7 +31,7 @@ public class Dama
 
     Icon icnTmp;
 
-    int punteggioB = 12, punteggioN = 12;
+    
 
     Color marrone = new Color(69, 47, 28);
     Color beige = new Color(240, 222, 173);
@@ -48,10 +48,10 @@ public class Dama
         pnlTurno.add(lblTurno);
         pnlTurno.setBorder(new EmptyBorder(20, 450, 0, 0));
 
-        lblPunteggioB = new JLabel("X "+punteggioB);
+        lblPunteggioB = new JLabel("X "+b.nPedine);
         lblPunteggioB.setFont(new Font("Arial", Font.PLAIN, 75));
 
-        lblPunteggioN = new JLabel("X "+punteggioN);
+        lblPunteggioN = new JLabel("X "+n.nPedine);
         lblPunteggioN.setFont(new Font("Arial", Font.PLAIN, 75));
 
         pnlPunteggio = new JPanel(new GridLayout(2, 2));
@@ -126,13 +126,14 @@ public class Dama
  
     }
     JButton btnPosto1 = null;  
-    class SelezionePedina implements ActionListener {    
+    class SelezionePedina implements ActionListener {   
+        int punteggioB=0 , punteggioN=0 ;
         public void actionPerformed(ActionEvent e) {
             JButton btnTemp = (JButton) e.getSource();
             if(btnPosto1 == null){
-                if(btnTemp.getIcon()==n.imgPedina){
+                if(btnTemp.getIcon()==n.imgPedina||btnTemp.getIcon()==n.imgDama){
                     btnPosto1 = btnTemp;
-                }else if(btnTemp.getIcon()==b.imgPedina){
+                }else if(btnTemp.getIcon()==b.imgPedina||btnTemp.getIcon()==b.imgDama){
                     btnPosto1 = btnTemp;
 
                 }
@@ -145,11 +146,22 @@ public class Dama
                         btnDamiera[0][i].setIcon(b.imgDama);
                     }
 
-                    if (btnDamiera[7][i].getIcon()==n.imgPedina)
-                    {
+                    if (btnDamiera[7][i].getIcon()==n.imgPedina){
                         btnDamiera[7][i].setIcon(n.imgDama);
                     }
+                    for(int j=0;j<8;j++){
+                        if(btnDamiera[i][j].getIcon()==n.imgPedina||btnDamiera[i][j].getIcon()==n.imgDama){
+                            punteggioN++;
+                        }
+                        if(btnDamiera[i][j].getIcon()==b.imgPedina||btnDamiera[i][j].getIcon()==b.imgDama){
+                            punteggioB++;
+                        }
+                    }
                 }
+                lblPunteggioB.setText("X "+(Integer.toString(punteggioB)));
+                lblPunteggioN.setText("X "+(Integer.toString(punteggioN)));
+                punteggioB=0;
+                punteggioN=0;
                 //qua dobbiamo fare il controllore con le regole del gioco(se la pedina puo andare in quel posto oppure no)
                 btnPosto1 = null;
             }
