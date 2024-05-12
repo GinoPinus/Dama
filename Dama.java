@@ -137,7 +137,7 @@ public class Dama
                     btnPosto1 = btnTemp;
 
                 }
-            }else if(btnTemp.getBackground() == marrone){
+            }else if(btnTemp.getBackground() == marrone && btnTemp.getIcon() == null){
                 icnTmp=btnPosto1.getIcon();
                 btnPosto1.setIcon(null);
                 btnTemp.setIcon(icnTmp);
