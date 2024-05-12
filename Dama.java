@@ -5,7 +5,13 @@ import javax.swing.plaf.basic.BasicComboPopup;
 import java.awt.*;
 import java.awt.event.*;
 
-public class Dama {
+/*
+Versione: 0.81
+Data: 12/5/24 
+ */
+
+public class Dama
+{
     JFrame f;
 
     // Parte Sinistra: board
@@ -28,6 +34,7 @@ public class Dama {
     int punteggioB = 12, punteggioN = 12;
 
     Color marrone = new Color(69, 47, 28);
+    Color beige = new Color(240, 222, 173);
     Dama(){
         f = new JFrame("Dama");
         f.setVisible(true);
@@ -74,10 +81,10 @@ public class Dama {
                 btnDamiera[i][j] = new JButton();
                 btnDamiera[i][j].addActionListener(new SelezionePedina());
                 if (temp) {
-                    btnDamiera[i][j].setBackground(Color.white);
+                    btnDamiera[i][j].setBackground(beige);
                     temp = false;
                 } else {
-                    btnDamiera[i][j].setBackground(Color.black);
+                    btnDamiera[i][j].setBackground(marrone);
                     if (cN > 19) {
                         btnDamiera[i][j].setIcon(b.imgPedina);
                         // btnDamiera[i][j].setText("N");
@@ -127,7 +134,7 @@ public class Dama {
                     btnPosto1 = btnTemp;
                     //qua possiamo mettere un colore rosso che durera mezzo secondo 
                 }
-            }else if(btnTemp.getBackground() == Color.black){
+            }else if(btnTemp.getBackground() == marrone){
                 icnTmp=btnPosto1.getIcon();
                 btnPosto1.setIcon(null);
                 btnTemp.setIcon(icnTmp);
