@@ -1,7 +1,7 @@
 import javax.swing.*;
 import javax.swing.border.EmptyBorder;
 import javax.swing.plaf.basic.BasicComboPopup;
-
+import java.util.concurrent.TimeUnit;
 import java.awt.*;
 import java.awt.event.*;
 
@@ -30,7 +30,7 @@ public class Dama
     Pedina b = new Pedina(false);
 
     Icon icnTmp;
-
+    Color clrTemp;
     
 
     Color marrone = new Color(69, 47, 28);
@@ -135,12 +135,12 @@ public class Dama
                     btnPosto1 = btnTemp;
                 }else if(btnTemp.getIcon()==b.imgPedina||btnTemp.getIcon()==b.imgDama){
                     btnPosto1 = btnTemp;
-
                 }
             }else if(btnTemp.getBackground() == marrone && btnTemp.getIcon() == null){
                 icnTmp=btnPosto1.getIcon();
                 btnPosto1.setIcon(null);
                 btnTemp.setIcon(icnTmp);
+                // controllo della regina
                 for(int i=0;i<8;i++){
                     if (btnDamiera[0][i].getIcon()==b.imgPedina){
                         btnDamiera[0][i].setIcon(b.imgDama);
@@ -149,6 +149,7 @@ public class Dama
                     if (btnDamiera[7][i].getIcon()==n.imgPedina){
                         btnDamiera[7][i].setIcon(n.imgDama);
                     }
+                    // controllo del numero delle pedine
                     for(int j=0;j<8;j++){
                         if(btnDamiera[i][j].getIcon()==n.imgPedina||btnDamiera[i][j].getIcon()==n.imgDama){
                             punteggioN++;
@@ -162,7 +163,16 @@ public class Dama
                 lblPunteggioN.setText("X "+(Integer.toString(punteggioN)));
                 punteggioB=0;
                 punteggioN=0;
-                //qua dobbiamo fare il controllore con le regole del gioco(se la pedina puo andare in quel posto oppure no)
+                //qua dobbiamo fare il controllore con le regole del gioco
+                btnPosto1 = null;
+            }else{  // l'errore
+                try{
+                    clrTemp = btnTemp.getBackground();
+                    TimeUnit.MILLISECONDS.sleep(500);
+                    btnTemp.setBackground(clrTemp);
+                }catch(InterruptedException a){
+                    a.printStackTrace();
+                }
                 btnPosto1 = null;
             }
         }
