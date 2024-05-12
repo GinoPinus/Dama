@@ -28,10 +28,11 @@ public class Dama
 
     Pedina n = new Pedina(true);
     Pedina b = new Pedina(false);
+    Mossa mossa = new Mossa();
 
     Icon icnTmp;
     Color clrTemp;
-    
+    int i1, j1, i2, j2;
 
     Color marrone = new Color(69, 47, 28);
     Color beige = new Color(240, 222, 173);
@@ -136,36 +137,64 @@ public class Dama
                 }else if(btnTemp.getIcon()==b.imgPedina||btnTemp.getIcon()==b.imgDama){
                     btnPosto1 = btnTemp;
                 }
-            }else if(btnTemp.getBackground() == marrone && btnTemp.getIcon() == null){
-                icnTmp=btnPosto1.getIcon();
-                btnPosto1.setIcon(null);
-                btnTemp.setIcon(icnTmp);
-                // controllo della regina
+                //per salvare le coordinate della pedina
                 for(int i=0;i<8;i++){
-                    if (btnDamiera[0][i].getIcon()==b.imgPedina){
-                        btnDamiera[0][i].setIcon(b.imgDama);
-                    }
-
-                    if (btnDamiera[7][i].getIcon()==n.imgPedina){
-                        btnDamiera[7][i].setIcon(n.imgDama);
-                    }
-                    // controllo del numero delle pedine
                     for(int j=0;j<8;j++){
-                        if(btnDamiera[i][j].getIcon()==n.imgPedina||btnDamiera[i][j].getIcon()==n.imgDama){
-                            punteggioN++;
-                        }
-                        if(btnDamiera[i][j].getIcon()==b.imgPedina||btnDamiera[i][j].getIcon()==b.imgDama){
-                            punteggioB++;
+                        if(btnTemp==btnDamiera[i][j]){
+                            i1=i;
+                            j1=j;
                         }
                     }
                 }
-                lblPunteggioB.setText("X "+(Integer.toString(punteggioB)));
-                lblPunteggioN.setText("X "+(Integer.toString(punteggioN)));
-                punteggioB=0;
-                punteggioN=0;
-                //qua dobbiamo fare il controllore con le regole del gioco
-                btnPosto1 = null;
-            }else{  // l'errore
+                //
+            }else if(btnTemp.getBackground() == marrone && btnTemp.getIcon() == null){
+                //per salvare le coordinate del posto
+                for(int i=0;i<8;i++){
+                    for(int j=0;j<8;j++){
+                        if(btnTemp==btnDamiera[i][j]){
+                            i2=i;
+                            j2=j;
+                        }
+                    }
+                }
+                //
+                if(mossa.controlloC1(i1,j1,i2,j2,0)){
+                    System.out.println("ciaooo");
+                    icnTmp=btnPosto1.getIcon();
+                    btnPosto1.setIcon(null);
+                    btnTemp.setIcon(icnTmp);
+                    // controllo della regina
+                    for(int i=0;i<8;i++){
+                        if (btnDamiera[0][i].getIcon()==b.imgPedina){
+                            btnDamiera[0][i].setIcon(b.imgDama);
+                        }
+
+                        if (btnDamiera[7][i].getIcon()==n.imgPedina){
+                            btnDamiera[7][i].setIcon(n.imgDama);
+                        }
+                        // controllo del numero delle pedine
+                        for(int j=0;j<8;j++){
+                            if(btnDamiera[i][j].getIcon()==n.imgPedina||btnDamiera[i][j].getIcon()==n.imgDama){
+                                punteggioN++;
+                            }
+                            if(btnDamiera[i][j].getIcon()==b.imgPedina||btnDamiera[i][j].getIcon()==b.imgDama){
+                                punteggioB++;
+                            }
+                            //
+                            
+                        }
+                    }
+                    //
+                    //
+                    lblPunteggioB.setText("X "+(Integer.toString(punteggioB)));
+                    lblPunteggioN.setText("X "+(Integer.toString(punteggioN)));
+                    punteggioB=0;
+                    punteggioN=0;
+                    //qua dobbiamo fare il controllore con le regole del gioco
+                    btnPosto1 = null;
+                }else{btnPosto1 = null;}
+                
+            }else{      // l'errore
                 try{
                     clrTemp = btnTemp.getBackground();
                     TimeUnit.MILLISECONDS.sleep(500);
