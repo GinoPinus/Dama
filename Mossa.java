@@ -12,6 +12,8 @@ public class Mossa {
             if(i2==(i1+1)&&j2==(j1-1)||i2==(i1+1)&&j2==(j1+1)){
                 return true;
             }
+        }else if((i2==(i1+1)&&j2==(j1-1)||i2==(i1+1)&&j2==(j1+1))||(i2==(i1-1)&&j2==(j1-1)||i2==(i1-1)&&j2==(j1+1))){
+            return true;
         }
         return false;
     }

@@ -135,9 +135,18 @@ public class Dama
                 if(btnTemp.getIcon()==n.imgPedina||btnTemp.getIcon()==n.imgDama){
                     btnPosto1 = btnTemp;
                     nColore = 1;
+                    if(btnTemp.getIcon()==n.imgDama){
+                        nColore = 2;
+                    }
                 }else if(btnTemp.getIcon()==b.imgPedina||btnTemp.getIcon()==b.imgDama){
                     btnPosto1 = btnTemp;
                     nColore = 0;
+                    if(btnTemp.getIcon()==b.imgDama){
+                        nColore = 2;
+                    }
+                }
+                else{
+                    nColore = 2;
                 }
                 //per salvare le coordinate della pedina
                 for(int i=0;i<8;i++){
