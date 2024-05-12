@@ -1,6 +1,5 @@
 import javax.swing.*;
 import javax.swing.border.EmptyBorder;
-import javax.swing.plaf.basic.BasicComboPopup;
 import java.util.concurrent.TimeUnit;
 import java.awt.*;
 import java.awt.event.*;
@@ -126,7 +125,8 @@ public class Dama
         f.add(pnlPunteggio, "East");
  
     }
-    JButton btnPosto1 = null;  
+    JButton btnPosto1 = null;
+    int nColore; //colore della pedina selezionata / n = 0 per il bianco e 1 per il nero
     class SelezionePedina implements ActionListener {   
         int punteggioB=0 , punteggioN=0 ;
         public void actionPerformed(ActionEvent e) {
@@ -134,8 +134,10 @@ public class Dama
             if(btnPosto1 == null){
                 if(btnTemp.getIcon()==n.imgPedina||btnTemp.getIcon()==n.imgDama){
                     btnPosto1 = btnTemp;
+                    nColore = 1;
                 }else if(btnTemp.getIcon()==b.imgPedina||btnTemp.getIcon()==b.imgDama){
                     btnPosto1 = btnTemp;
+                    nColore = 0;
                 }
                 //per salvare le coordinate della pedina
                 for(int i=0;i<8;i++){
@@ -158,7 +160,7 @@ public class Dama
                     }
                 }
                 //
-                if(mossa.controlloC1(i1,j1,i2,j2,0)){
+                if(mossa.controlloC1(i1,j1,i2,j2,nColore)){
                     System.out.println("ciaooo");
                     icnTmp=btnPosto1.getIcon();
                     btnPosto1.setIcon(null);
