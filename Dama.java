@@ -35,6 +35,8 @@ public class Dama
 
     Color marrone = new Color(69, 47, 28);
     Color beige = new Color(240, 222, 173);
+
+    int turno = 1;  //1 = turno del player 1 / 2 = turno del player 2
     Dama(){
         f = new JFrame("Dama");
         f.setVisible(true);
@@ -42,7 +44,7 @@ public class Dama
         f.setLayout(new BorderLayout());
         f.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
-        lblTurno = new JLabel("E' il tuo turno");
+        lblTurno = new JLabel("E' il turno del player 1");
         lblTurno.setFont(new Font("Calibri", Font.PLAIN, 24));
         pnlTurno = new JPanel(new GridLayout(1, 1));
         pnlTurno.add(lblTurno);
@@ -130,18 +132,96 @@ public class Dama
     class SelezionePedina implements ActionListener {   
         int punteggioB=0 , punteggioN=0 ;
         public void actionPerformed(ActionEvent e) {
-            JButton btnTemp = (JButton) e.getSource();
+            if(turno == 1){
+                JButton btnTemp = (JButton) e.getSource();
+                if(btnPosto1 == null){
+                    if(btnTemp.getIcon()==b.imgPedina||btnTemp.getIcon()==b.imgDama){
+                        btnPosto1 = btnTemp;
+                        nColore = 0;
+                        if(btnTemp.getIcon()==b.imgDama){
+                            nColore = 2;
+                        }
+                    }
+                    else{
+                        nColore = 2;
+                    }
+                    //per salvare le coordinate della pedina
+                    for(int i=0;i<8;i++){
+                        for(int j=0;j<8;j++){
+                            if(btnTemp==btnDamiera[i][j]){
+                                i1=i;
+                                j1=j;
+                            }
+                        }
+                    }
+                    //
+                }else if(btnTemp.getBackground() == marrone && btnTemp.getIcon() == null){
+                    //per salvare le coordinate del posto
+                    for(int i=0;i<8;i++){
+                        for(int j=0;j<8;j++){
+                            if(btnTemp==btnDamiera[i][j]){
+                                i2=i;
+                                j2=j;
+                            }
+                        }
+                    }
+                    //
+                    if(mossa.controlloC1(i1,j1,i2,j2,nColore,btnDamiera)){
+                        icnTmp=btnPosto1.getIcon();
+                        btnPosto1.setIcon(null);
+                        btnTemp.setIcon(icnTmp);
+                        // controllo della regina
+                        for(int i=0;i<8;i++){
+                            if (btnDamiera[0][i].getIcon()==b.imgPedina){
+                                btnDamiera[0][i].setIcon(b.imgDama);
+                            }
+    
+                            if (btnDamiera[7][i].getIcon()==n.imgPedina){
+                                btnDamiera[7][i].setIcon(n.imgDama);
+                            }
+                            // controllo del numero delle pedine
+                            for(int j=0;j<8;j++){
+                                if(btnDamiera[i][j].getIcon()==n.imgPedina||btnDamiera[i][j].getIcon()==n.imgDama){
+                                    punteggioN++;
+                                }
+                                if(btnDamiera[i][j].getIcon()==b.imgPedina||btnDamiera[i][j].getIcon()==b.imgDama){
+                                    punteggioB++;
+                                }
+                                //
+                                
+                            }
+                        }
+                        //
+                        //
+                        lblPunteggioB.setText("X "+(Integer.toString(punteggioB)));
+                        lblPunteggioN.setText("X "+(Integer.toString(punteggioN)));
+                        punteggioB=0;
+                        punteggioN=0;
+                        //qua dobbiamo fare il controllore con le regole del gioco
+                        btnPosto1 = null;
+                    }else{
+                        btnPosto1 = null;
+                    }
+                    turno=2;
+                    lblTurno.setText("E' il turno del player 2");
+                }else{      // l'errore
+                    try{
+                        clrTemp = btnTemp.getBackground();
+                        TimeUnit.MILLISECONDS.sleep(500);
+                        btnTemp.setBackground(clrTemp);
+                    }catch(InterruptedException a){
+                        a.printStackTrace();
+                    }
+                    btnPosto1 = null;
+                }
+                
+            }else{
+                JButton btnTemp = (JButton) e.getSource();
             if(btnPosto1 == null){
                 if(btnTemp.getIcon()==n.imgPedina||btnTemp.getIcon()==n.imgDama){
                     btnPosto1 = btnTemp;
                     nColore = 1;
                     if(btnTemp.getIcon()==n.imgDama){
-                        nColore = 2;
-                    }
-                }else if(btnTemp.getIcon()==b.imgPedina||btnTemp.getIcon()==b.imgDama){
-                    btnPosto1 = btnTemp;
-                    nColore = 0;
-                    if(btnTemp.getIcon()==b.imgDama){
                         nColore = 2;
                     }
                 }
@@ -202,8 +282,11 @@ public class Dama
                     punteggioN=0;
                     //qua dobbiamo fare il controllore con le regole del gioco
                     btnPosto1 = null;
-                }else{btnPosto1 = null;}
-                
+                }else{
+                    btnPosto1 = null;
+                }
+                turno=1;
+                lblTurno.setText("E' il turno del player 1");
             }else{      // l'errore
                 try{
                     clrTemp = btnTemp.getBackground();
@@ -214,6 +297,8 @@ public class Dama
                 }
                 btnPosto1 = null;
             }
+            }
+            
         }
     }
 

@@ -4,7 +4,6 @@ public class Mossa
 {
     Pedina Pn;
     Pedina Pb;
-
     Mossa(Pedina Pn, Pedina Pb)
     {
         this.Pn = Pn;
