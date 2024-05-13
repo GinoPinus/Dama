@@ -274,9 +274,9 @@ public class Dama {
                         btnPosto1 = null;
                         turno = 1;
                         if(punteggioB==0){
-                            lblTurno.setText("Ha vinto il nero!");
+                           new Vittoria(true);
                         }else if(punteggioN==0){
-                            lblTurno.setText("Ha vinto il bianco!");
+                            new Vittoria(false);
                         }else{
                             lblTurno.setText("E' il turno del bianco");
                         }
