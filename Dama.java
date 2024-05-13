@@ -186,13 +186,18 @@ public class Dama {
                         }
                         lblPunteggioB.setText("X " + (Integer.toString(punteggioB)));
                         lblPunteggioN.setText("X " + (Integer.toString(punteggioN)));
-                        punteggioB = 0;
-                        punteggioN = 0;
-                        // qua dobbiamo fare il controllore con le regole del
-                        // gioco
+                        
                         btnPosto1 = null;
                         turno = 2;
-                        lblTurno.setText("E' il turno del nero");
+                        if(punteggioB==0){
+                            lblTurno.setText("Ha vinto il nero!");
+                        }else if(punteggioN==0){
+                            lblTurno.setText("Ha vinto il bianco!");
+                        }else{
+                            lblTurno.setText("E' il turno del nero");
+                        }
+                        punteggioB = 0;
+                        punteggioN = 0;
                     } else {
                         btnPosto1 = null;
                     }
@@ -265,12 +270,19 @@ public class Dama {
 
                         lblPunteggioB.setText("X " + (Integer.toString(punteggioB)));
                         lblPunteggioN.setText("X " + (Integer.toString(punteggioN)));
-                        punteggioB = 0;
-                        punteggioN = 0;
-
+                        
                         btnPosto1 = null;
                         turno = 1;
-                        lblTurno.setText("E' il turno del bianco");
+                        if(punteggioB==0){
+                            lblTurno.setText("Ha vinto il nero!");
+                        }else if(punteggioN==0){
+                            lblTurno.setText("Ha vinto il bianco!");
+                        }else{
+                            lblTurno.setText("E' il turno del bianco");
+                        }
+                        
+                        punteggioB = 0;
+                        punteggioN = 0;
                     } else {
                         btnPosto1 = null;
                     }
