@@ -58,8 +58,73 @@ public class Mossa
                     }
                 }
             }
-        }else if((i2==(i1+1)&&j2==(j1-1)||i2==(i1+1)&&j2==(j1+1))||(i2==(i1-1)&&j2==(j1-1)||i2==(i1-1)&&j2==(j1+1))){
-            return true;
+        }else if(n == 2)
+        {
+            if ((i2==(i1+1)&&j2==(j1-1)||i2==(i1+1)&&j2==(j1+1))||(i2==(i1-1)&&j2==(j1-1)||i2==(i1-1)&&j2==(j1+1)))
+            {
+                return true;
+            }
+            else if (Math.abs(i2 - i1) == 2 && Math.abs(j2 - j1) == 2)
+            {
+                int temp, temp2;
+                if (i1 > i2)
+                {
+                    temp = i1;
+                }
+                else
+                {
+                    temp = i2;
+                }
+
+                if (j1 > j2)
+                {
+                    temp2 = j1;
+                }
+                else
+                {
+                    temp2 = j2;
+                }
+
+                if (btnDamiera[temp - 1][temp2 - 1].getIcon() == Pn.imgPedina || btnDamiera[temp - 1][temp2 - 1].getIcon() == Pn.imgDama)
+                {
+                        btnDamiera[temp - 1][temp2 - 1].setIcon(null);
+                        return true;
+                }
+            }
+        }
+        else if(n == 3)
+        {
+            if ((i2==(i1+1)&&j2==(j1-1)||i2==(i1+1)&&j2==(j1+1))||(i2==(i1-1)&&j2==(j1-1)||i2==(i1-1)&&j2==(j1+1)))
+            {
+                return true;
+            }
+            else if (Math.abs(i2 - i1) == 2 && Math.abs(j2 - j1) == 2)
+            {
+                int temp, temp2;
+                if (i1 > i2)
+                {
+                    temp = i1;
+                }
+                else
+                {
+                    temp = i2;
+                }
+
+                if (j1 > j2)
+                {
+                    temp2 = j1;
+                }
+                else
+                {
+                    temp2 = j2;
+                }
+
+                if (btnDamiera[temp - 1][temp2 - 1].getIcon() == Pb.imgPedina || btnDamiera[temp - 1][temp2 - 1].getIcon() == Pb.imgDama)
+                {
+                        btnDamiera[temp - 1][temp2 - 1].setIcon(null);
+                        return true;
+                }
+            }
         }
         return false;
     }
