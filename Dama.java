@@ -161,7 +161,9 @@ public class Dama {
                         }
                     }
                     //
-                    if (mossa.controlloC1(i1, j1, i2, j2, nColore, btnDamiera)) {
+                    int prova=mossa.controlloC1(i1, j1, i2, j2, nColore, btnDamiera);
+                    if (prova==2||prova==1) {
+
                         icnTmp = btnPosto1.getIcon();
                         btnPosto1.setIcon(null);
                         btnTemp.setIcon(icnTmp);
@@ -188,7 +190,11 @@ public class Dama {
                         lblPunteggioN.setText("X " + (Integer.toString(punteggioN)));
                         
                         btnPosto1 = null;
-                        turno = 2;
+                        if(prova==2){
+                            turno = 1;
+                        }else{
+                            turno = 2;
+                        }
                         if(punteggioB==0){
                             lblTurno.setText("Ha vinto il nero!");
                         }else if(punteggioN==0){
@@ -244,7 +250,8 @@ public class Dama {
                             }
                         }
                     }
-                    if (mossa.controlloC1(i1, j1, i2, j2, nColore, btnDamiera)) {
+                    int prova=mossa.controlloC1(i1, j1, i2, j2, nColore, btnDamiera);
+                    if (prova==2||mossa.controlloC1(i1, j1, i2, j2, nColore, btnDamiera)==1) {
                         icnTmp = btnPosto1.getIcon();
                         btnPosto1.setIcon(null);
                         btnTemp.setIcon(icnTmp);
@@ -272,7 +279,12 @@ public class Dama {
                         lblPunteggioN.setText("X " + (Integer.toString(punteggioN)));
                         
                         btnPosto1 = null;
-                        turno = 1;
+                        if(prova==2){
+                            turno = 2;
+                        }else{
+                            turno = 1;
+                        }
+                        
                         if(punteggioB==0){
                            new Vittoria(true);
                         }else if(punteggioN==0){

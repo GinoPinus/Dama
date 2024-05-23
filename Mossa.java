@@ -10,11 +10,11 @@ public class Mossa
         this.Pb = Pb;
     }
 
-    boolean controlloC1(int i1, int j1, int i2, int j2, int n, JButton[][] btnDamiera){     //controllo caso    / n = 0 per il bianco e 1 per il nero
+    int controlloC1(int i1, int j1, int i2, int j2, int n, JButton[][] btnDamiera){     //controllo caso    / n = 0 per il bianco e 1 per il nero
         if(n==0){         //pedina bianca
 
             if(i2==(i1-1)&&j2==(j1-1)||i2==(i1-1)&&j2==(j1+1)){
-                return true;
+                return 1;
             }
             else if(i2==(i1-2)&&j2==(j1-2)||i2==(i1-2)&&j2==(j1+2))
             {
@@ -23,7 +23,7 @@ public class Mossa
                     if (btnDamiera[i2 + 1][j2 + 1].getIcon() == Pn.imgPedina || btnDamiera[i2 + 1][j2 + 1].getIcon() == Pn.imgDama)
                     {
                         btnDamiera[i2 + 1][j2 + 1].setIcon(null);
-                        return true;
+                        return 2;
                     }
                 }
                 else if (j2 > j1)
@@ -31,13 +31,13 @@ public class Mossa
                     if (btnDamiera[i2 + 1][j2 - 1].getIcon() == Pn.imgPedina || btnDamiera[i2 + 1][j2 - 1].getIcon() == Pn.imgDama)
                     {
                         btnDamiera[i2 + 1][j2 - 1].setIcon(null);
-                        return true;
+                        return 2;
                     }
                 }
             }
         }else if(n==1){   //pedina nera  
             if(i2==(i1+1)&&j2==(j1-1)||i2==(i1+1)&&j2==(j1+1)){
-                return true;
+                return 1;
             }
             else if(i2==(i1+2)&&j2==(j1-2)||i2==(i1+2)&&j2==(j1+2))
             {
@@ -46,7 +46,7 @@ public class Mossa
                     if (btnDamiera[i2 - 1][j2 + 1].getIcon() == Pb.imgPedina || btnDamiera[i2 - 1][j2 + 1].getIcon() == Pb.imgDama)
                     {
                         btnDamiera[i2 - 1][j2 + 1].setIcon(null);
-                        return true;
+                        return 2;
                     }
                 }
                 else if (j2 > j1)
@@ -54,7 +54,7 @@ public class Mossa
                     if (btnDamiera[i2 - 1][j2 - 1].getIcon() == Pb.imgPedina || btnDamiera[i2 - 1][j2 - 1].getIcon() == Pb.imgDama)
                     {
                         btnDamiera[i2 - 1][j2 - 1].setIcon(null);
-                        return true;
+                        return 2;
                     }
                 }
             }
@@ -62,7 +62,7 @@ public class Mossa
         {
             if ((i2==(i1+1)&&j2==(j1-1)||i2==(i1+1)&&j2==(j1+1))||(i2==(i1-1)&&j2==(j1-1)||i2==(i1-1)&&j2==(j1+1)))
             {
-                return true;
+                return 1;
             }
             else if (Math.abs(i2 - i1) == 2 && Math.abs(j2 - j1) == 2)
             {
@@ -88,7 +88,7 @@ public class Mossa
                 if (btnDamiera[temp - 1][temp2 - 1].getIcon() == Pn.imgPedina || btnDamiera[temp - 1][temp2 - 1].getIcon() == Pn.imgDama)
                 {
                         btnDamiera[temp - 1][temp2 - 1].setIcon(null);
-                        return true;
+                        return 2;
                 }
             }
         }
@@ -96,7 +96,7 @@ public class Mossa
         {
             if ((i2==(i1+1)&&j2==(j1-1)||i2==(i1+1)&&j2==(j1+1))||(i2==(i1-1)&&j2==(j1-1)||i2==(i1-1)&&j2==(j1+1)))
             {
-                return true;
+                return 1;
             }
             else if (Math.abs(i2 - i1) == 2 && Math.abs(j2 - j1) == 2)
             {
@@ -122,10 +122,10 @@ public class Mossa
                 if (btnDamiera[temp - 1][temp2 - 1].getIcon() == Pb.imgPedina || btnDamiera[temp - 1][temp2 - 1].getIcon() == Pb.imgDama)
                 {
                         btnDamiera[temp - 1][temp2 - 1].setIcon(null);
-                        return true;
+                        return 2;
                 }
             }
         }
-        return false;
+        return 0;
     }
 }
