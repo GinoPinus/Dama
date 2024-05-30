@@ -1,4 +1,5 @@
-import java.awt.BorderLayout;
+
+import java.awt.*;
 import javax.swing.*;
 
 public class Vittoria{
@@ -8,20 +9,19 @@ public class Vittoria{
     public Vittoria(boolean vincitore){
         //Costruttore
         jFrame = new JFrame("Vittoria!");
+        ImageIcon imgBackground = new ImageIcon("img/coriandoli.png");
+        JLabel lblBackg = new JLabel(imgBackground);
+        jFrame.setContentPane(lblBackg);
+
         jLabel = new JLabel();
         jFrame.setLayout(new BorderLayout());
 
-        if (vincitore)  //false = bianco, true = nero
-        {
-            jLabel.setText("Nero ha vinto!!");
-        }
-        else
-        {
-            jLabel.setText("Bianco ha vinto!!");
-        }
+        jLabel.setHorizontalAlignment(JLabel.CENTER);
+        jLabel.setVerticalAlignment(JLabel.CENTER);
 
         jFrame.add(jLabel, BorderLayout.CENTER);
-        jFrame.setSize(500,500);
+        jFrame.setSize(600,500);
+        jFrame.setLocation(700,300);
         jFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         jFrame.setVisible(true);
     }
