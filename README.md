@@ -1,6 +1,14 @@
 # Dama
 #### Video Demo:  <https://youtu.be/3t_2NDYo-oE>
 #### Description:
+Here’s the updated **README.md** file with all the provided information integrated:
+
+---
+
+# Italian Checkers (Dama Italiana)
+
+## Project Overview
+
 This project is a digital recreation of *Dama Italiana* (Italian Checkers), a traditional board game of strategy and tactics. Played on an 8x8 checkered board with 12 white and 12 black pieces, players aim to capture all of their opponent’s pieces or block their moves entirely. Pieces move diagonally, and reaching the opponent’s back row promotes a piece to "dama" (queen), granting enhanced movement capabilities.
 
 The game is built in Java, with a user-friendly graphical interface (GUI) and strict adherence to the official rules of Italian Checkers.
@@ -17,8 +25,8 @@ The game is built in Java, with a user-friendly graphical interface (GUI) and st
   All moves are checked against the game rules, including valid diagonal movements and capturing.  
 - **Dama Promotion**:  
   Pieces reaching the last row are promoted to dama and gain additional movement capabilities.  
-- **Victory Detection**:  
-  Automatically detects when a player has won by eliminating all opponent pieces or blocking their moves.  
+- **Victory Screen**:  
+  A custom victory window announces the winner with a corresponding background image.  
 - **Error Handling**:  
   Prevents invalid moves and highlights errors to guide players.  
 
@@ -47,6 +55,16 @@ Represents individual game pieces with attributes like:
 - Piece color (white or black).  
 - Methods for interaction with the board and GUI.
 
+#### **`Vittoria.java`**
+The `Vittoria` class is responsible for displaying a victory screen when the game concludes. It dynamically selects the appropriate background image based on the winner.  
+- **Dynamic Background**: Displays either `neroVince.png` or `biancoVince.png`, depending on whether black or white wins.  
+- **Custom Window**: Creates a visually appealing `JFrame` titled "Victory!" to celebrate the winner.  
+- **Usage**: Can be invoked at the end of the game with:
+  ```java
+  new Vittoria(true); // Displays victory screen for black.
+  new Vittoria(false); // Displays victory screen for white.
+  ```
+
 ---
 
 ## How to Play
@@ -61,7 +79,7 @@ Represents individual game pieces with attributes like:
 
 3. **Winning**:  
    - The game ends when a player has no pieces left or cannot make a valid move.  
-   - A dialog announces the winner.  
+   - A victory screen announces the winner.
 
 ---
 
@@ -75,7 +93,7 @@ Represents individual game pieces with attributes like:
 1. Clone or download this repository.  
 2. Compile the files using your IDE or the terminal:
    ```bash
-   javac Dama.java Mossa.java Pedina.java
+   javac Dama.java Mossa.java Pedina.java Vittoria.java
    ```
 3. Run the game:
    ```bash
@@ -89,5 +107,7 @@ Represents individual game pieces with attributes like:
 This project was developed by:  
 - **Melek Chteoui**  
 - **Simone La Salvia**
+
+---
 
 This description was written with help from AI tools.
