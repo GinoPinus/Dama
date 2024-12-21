@@ -89,3 +89,5 @@ Represents individual game pieces with attributes like:
 This project was developed by:  
 - **Melek Chteoui**  
 - **Simone La Salvia**
+
+This description was written with help from AI tools.
