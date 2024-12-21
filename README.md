@@ -59,11 +59,6 @@ Represents individual game pieces with attributes like:
 The `Vittoria` class is responsible for displaying a victory screen when the game concludes. It dynamically selects the appropriate background image based on the winner.  
 - **Dynamic Background**: Displays either `neroVince.png` or `biancoVince.png`, depending on whether black or white wins.  
 - **Custom Window**: Creates a visually appealing `JFrame` titled "Victory!" to celebrate the winner.  
-- **Usage**: Can be invoked at the end of the game with:
-  ```java
-  new Vittoria(true); // Displays victory screen for black.
-  new Vittoria(false); // Displays victory screen for white.
-  ```
 
 ---
 
@@ -80,25 +75,6 @@ The `Vittoria` class is responsible for displaying a victory screen when the gam
 3. **Winning**:  
    - The game ends when a player has no pieces left or cannot make a valid move.  
    - A victory screen announces the winner.
-
----
-
-## Getting Started
-
-### Prerequisites
-- **Java Development Kit (JDK)**: Version 8 or higher.  
-- **Integrated Development Environment (IDE)**: IntelliJ IDEA, Eclipse, or similar.  
-
-### Installation
-1. Clone or download this repository.  
-2. Compile the files using your IDE or the terminal:
-   ```bash
-   javac Dama.java Mossa.java Pedina.java Vittoria.java
-   ```
-3. Run the game:
-   ```bash
-   java Dama
-   ```
 
 ---
 
