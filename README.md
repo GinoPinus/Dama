@@ -62,7 +62,7 @@ The `Vittoria` class is responsible for displaying a victory screen when the gam
 
 ### Images
 
-#### All Images and backgrounds have been created from scratch from us.
+All Images and backgrounds have been created from scratch from us.
 
 ---
 
