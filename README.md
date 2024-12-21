@@ -1,69 +1,74 @@
 # Dama
 #### Video Demo:  <https://youtu.be/3t_2NDYo-oE>
 #### Description:
-This project is a digital implementation of Dama Italiana (Italian Checkers), a traditional strategy board game. The game is played on an 8x8 board with 24 pieces—12 white and 12 black—arranged on the dark squares. Players take turns moving diagonally, capturing their opponent’s pieces, and promoting pieces to "dama" (queen) by reaching the last row. The goal is to capture all the opponent's pieces or block their ability to move.
+This project is a digital recreation of Dama Italiana (Italian Checkers), a traditional board game of strategy and tactics. Played on an 8x8 checkered board with 12 white and 12 black pieces, players aim to capture all of their opponent’s pieces or block their moves entirely. Pieces move diagonally, and reaching the opponent’s back row promotes a piece to "dama" (queen), granting enhanced movement capabilities.
 
-The application is built using Java and features a graphical user interface (GUI) for an intuitive and enjoyable experience. It ensures adherence to the rules of Italian Checkers, making it suitable for both beginners and experienced players.
+The game is built in Java, with a user-friendly graphical interface (GUI) and strict adherence to the official rules of Italian Checkers.
 
 Features
-Graphical User Interface (GUI):
-
-The board is displayed as an 8x8 grid using JButton components.
-Dark and light squares alternate, with gameplay restricted to dark squares.
-Player pieces are visually represented using distinct icons for white, black, and dama pieces.
-Labels track the current player’s turn and the number of remaining pieces for each side.
+Interactive GUI:
+A visually appealing 8x8 board built using JButton components, with alternating light and dark squares. Player pieces are represented with icons, and scores are displayed dynamically.
 Turn-Based Gameplay:
-
-Players alternate turns, and the game enforces the rules of movement and capturing.
+Alternating turns between two players with real-time updates on the current turn and captured pieces.
 Legal Move Validation:
-
-Movements are checked for legality based on the game rules, including diagonal movement and capturing.
+All moves are checked against the game rules, including valid diagonal movements and capturing.
 Dama Promotion:
-
-Pieces are promoted to dama when they reach the opponent's last row, gaining additional movement capabilities.
-Win Condition:
-
-The game ends when one player captures all opponent pieces or blocks them from making legal moves.
+Pieces reaching the last row are promoted to dama and gain additional movement capabilities.
+Victory Detection:
+Automatically detects when a player has won by eliminating all opponent pieces or blocking their moves.
 Error Handling:
-
-Invalid moves are highlighted, and the player is prompted to retry.
+Prevents invalid moves and highlights errors to guide players.
 File Descriptions
 Main Classes
 Dama.java
-This is the main class that initializes the game and its GUI. It handles:
+This is the main class responsible for initializing and running the game. It includes:
 
-Creating the game board using JButton components.
-Setting up the layout for player turn and score indicators.
-Managing player turns and invoking the Mossa class to validate moves.
-Handling the promotion of pieces to dama.
-Declaring the winner when all opponent pieces are captured.
-The creaFrame method sets up the main game window and layouts, while the prepDamiera method initializes the board with alternating square colors and piece placements.
-
+GUI setup with methods creaFrame (for window layout) and prepDamiera (for board initialization).
+Turn management and integration with the Mossa class to validate moves.
+Promotion logic for pieces reaching the back row and handling game-ending conditions.
 Mossa.java
-This class contains the logic for validating moves. It checks:
+This class manages move validation and game rules. Key functionalities include:
 
-Standard Moves: Ensures diagonal movement of one square for regular pieces.
-Captures: Validates double-square diagonal moves for capturing opponent pieces.
-Dama Moves: Allows dama pieces to move diagonally in any direction and capture pieces in their path.
-The controlloC1 method enforces these rules based on the piece type (regular or dama) and its color (white or black). Captured pieces are removed from the board by setting their icons to null.
+Validating standard diagonal moves for regular pieces.
+Checking capture moves and removing captured pieces from the board.
+Supporting advanced diagonal moves for dama pieces.
+Ensuring each move follows Italian Checkers rules.
+Pedina.java (Inferred from other files)
+Represents individual game pieces with attributes like:
 
-Pedina.java (Not provided but inferred)
-Represents individual game pieces, managing:
-
+Piece type (regular or dama).
 Piece color (white or black).
-Icons for regular pieces and dama.
-Methods for interacting with the GUI components.
-How It Works
+Methods for interaction with the board and GUI.
+How to Play
 Setup:
+Run the Dama class to launch the game. The GUI will display the board, player pieces, and turn/score indicators.
 
-Run the Dama class to start the game.
-The GUI initializes, displaying the board and player indicators.
 Gameplay:
 
-Players select a piece and its destination square.
-Valid moves update the board, while invalid attempts prompt the player to retry.
-Pieces reaching the opponent's last row are automatically promoted to dama.
+Players select a piece and a valid destination.
+Moves must follow diagonal paths, with captures prioritized when available.
+Pieces reaching the opponent's back row are promoted to dama automatically.
 Winning:
 
-The game ends when a player has no pieces left or cannot make a legal move.
-A pop-up announces the winner.
+The game ends when a player has no pieces left or cannot make a valid move.
+A dialog announces the winner.
+Getting Started
+Prerequisites
+Java Development Kit (JDK): Version 8 or higher.
+Integrated Development Environment (IDE): IntelliJ IDEA, Eclipse, or similar.
+Installation
+Clone or download this repository.
+Compile the files using your IDE or the terminal:
+bash
+Copia codice
+javac Dama.java Mossa.java Pedina.java
+Run the game:
+bash
+Copia codice
+java Dama
+
+Authors
+This project was developed by:
+
+Melek Chteoui
+Simone La Salvia
