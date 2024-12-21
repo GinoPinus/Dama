@@ -58,7 +58,11 @@ Represents individual game pieces with attributes like:
 #### **`Vittoria.java`**
 The `Vittoria` class is responsible for displaying a victory screen when the game concludes. It dynamically selects the appropriate background image based on the winner.  
 - **Dynamic Background**: Displays either `neroVince.png` or `biancoVince.png`, depending on whether black or white wins.  
-- **Custom Window**: Creates a visually appealing `JFrame` titled "Victory!" to celebrate the winner.  
+- **Custom Window**: Creates a visually appealing `JFrame` titled "Victory!" to celebrate the winner.
+
+### Images
+
+#### All Images and backgrounds have been created from scratch from us.
 
 ---
 
