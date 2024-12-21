@@ -112,7 +112,7 @@ public class Dama {
                         }else if(punteggioN==0){
                             new Vittoria(false);
                         }else{
-                            lblTurno.setText("E' il turno del nero");
+                            lblTurno.setText("Black's turn");
                         }
                         punteggioB = 0;
                         punteggioN = 0;
@@ -196,7 +196,7 @@ public class Dama {
                         }else if(punteggioN==0){
                             new Vittoria(false);
                         }else{
-                            lblTurno.setText("E' il turno del bianco");
+                            lblTurno.setText("White's turn");
                         }
                         
                         punteggioB = 0;
@@ -226,7 +226,7 @@ public class Dama {
         f.setLayout(new BorderLayout());
         f.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
-        lblTurno = new JLabel("E' il turno del bianco");
+        lblTurno = new JLabel("White's turn");
         lblTurno.setFont(new Font("Calibri", Font.PLAIN, 24));
         pnlTurno = new JPanel(new GridLayout(1, 1));
         pnlTurno.add(lblTurno);

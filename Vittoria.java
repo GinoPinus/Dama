@@ -1,15 +1,22 @@
-
+//This class was made with a little help from ChatGPT
 import java.awt.*;
 import javax.swing.*;
 
 public class Vittoria{
     JFrame jFrame;
     JLabel jLabel;
+    ImageIcon imgBackground;
 
     public Vittoria(boolean vincitore){
         //Costruttore
-        jFrame = new JFrame("Vittoria!");
-        ImageIcon imgBackground = new ImageIcon("img/coriandoli.png");
+        jFrame = new JFrame("Victory!");
+        if (vincitore)
+        {
+            imgBackground = new ImageIcon("img/neroVince.png");
+        }
+        else{
+            imgBackground = new ImageIcon("img/biancoVince.png");
+        }
         JLabel lblBackg = new JLabel(imgBackground);
         jFrame.setContentPane(lblBackg);
 
@@ -20,7 +27,7 @@ public class Vittoria{
         jLabel.setVerticalAlignment(JLabel.CENTER);
 
         jFrame.add(jLabel, BorderLayout.CENTER);
-        jFrame.setSize(600,500);
+        jFrame.setSize(700,500);
         jFrame.setLocation(700,300);
         jFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         jFrame.setVisible(true);
